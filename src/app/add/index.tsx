@@ -5,6 +5,7 @@ import { Text, TouchableOpacity, View } from "react-native"
 import { colors } from "@/styles/colors"
 import { styles } from "./styles"
 
+import { Button } from "@/components/button"
 import { Categories } from "@/components/categories"
 import { Input } from "@/components/input"
 
@@ -25,6 +26,7 @@ export default function Add() {
       <View style={styles.form}>
         <Input placeholder="Nome" />
         <Input placeholder="Url" />
+        <Button title="Adicionar" />
       </View>
     </View>
   )
