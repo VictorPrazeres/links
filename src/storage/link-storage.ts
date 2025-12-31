@@ -27,7 +27,4 @@ async function save(newLink: LinkStorage) {
   }
 }
 
-export const linkStorage = {
-  get,
-  save,
-}
+export const linkStorage = { get, save }
