@@ -67,8 +67,22 @@ export default function Index() {
 
   async function handleOpen() {
     try {
-      await Linking.openURL(link.url)
-      setShowModal(false)
+      let address = link.url
+
+      // Se não começar com http ou https, adiciona o https:// na frente
+      if (!address.startsWith("http://") && !address.startsWith("https://")) {
+        address = "https://" + address
+      }
+
+      // Verifica se o celular consegue abrir esse link antes de tentar
+      const canOpen = await Linking.canOpenURL(address)
+
+      if (canOpen) {
+        await Linking.openURL(address)
+        setShowModal(false)
+      } else {
+        Alert.alert("Link", "Não foi possível abrir este link específico.")
+      }
     } catch (error) {
       Alert.alert("Link", "Não foi possível abrir o link")
       console.error(error)
